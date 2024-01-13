@@ -1,0 +1,64 @@
+backend:
+  name: github
+  repo: apel-prevention/site-apel
+  branch: main
+  automatic_deployments: false
+publish_mode: editorial_workflow
+media_folder: static/images/uploads
+public_folder: /images/uploads
+site_url: https://apelprevention.fr/
+locale: fr
+collections:
+
+  - name: post
+    label: Articles
+    label_singular: Article
+    folder: content/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: blog }
+      - { label: Titre, name: title, widget: string }
+      - { label: Brouillon, name: draft, widget: boolean, default: true }
+      - { label: Auteur, name: author, widget: relation, collection: staff, value_field: title, search_fields: title, required: false }
+      - { label: Date de publication, name: date, widget: datetime }
+      - { label: Description, name: description, widget: string, required: false, hint: Information affichée dans la miniature lorsque la page est partagée }
+      - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image }, required: false, hint: Image affichée dans la miniature lorsque la page est partagée }
+      - { label: Contenu, name: body, widget: markdown }
+
+  - name: references
+    label: Références
+    label_singular: Référence
+    icon: folder_open
+    folder: content/references
+    create: true
+    fields:
+      - { label: Nom, name: title, widget: string }
+      - { label: Brouillon, name: draft, widget: boolean, default: true }
+      - { label: Date de la référence, name: date, widget: datetime }
+      - { label: Description, name: description, widget: string, required: false, hint: Information affichée dans la miniature lorsque la page est partagée }
+      - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image }, required: false, hint: Image affichée dans la miniature lorsque la page est partagée }
+      - { label: Contenu, name: body, widget: markdown, hint: Contenu }
+
+  - name: pages
+    label: Pages statiques
+    label_singular: Page statique
+    icon: info
+    description: Pages statiques
+    files:
+
+      - name: about
+        label: Contact
+        file: content/contact/_index.md
+        fields:
+          - { label: Titre, name: title, widget: string, hint: Titre de la page }
+          - { label: Description, name: description, widget: string, required: false, hint: Information affichée dans la miniature lorsque la page est partagée }
+          - { label: Contenu, name: body, widget: markdown }
+
+      - name: legal
+        label: Mentions légales
+        file: content/legal/_index.md
+        fields:
+          - { label: Titre, name: title, widget: string, hint: Titre de la page }
+          - { label: Description, name: description, widget: string, required: false, hint: Information affichée dans la miniature lorsque la page est partagée }
+          - { label: Contenu, name: body, widget: markdown }
