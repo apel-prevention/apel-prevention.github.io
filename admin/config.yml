@@ -40,12 +40,32 @@ collections:
       - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image }, required: false, hint: Image affichée dans la miniature lorsque la page est partagée }
       - { label: Contenu, name: body, widget: markdown, hint: Contenu }
 
+  - name: activities
+    label: Activités
+    label_singular: Activité
+    icon: detection_and_zone
+    folder: content/activities
+    create: true
+    fields:
+      - { label: Nom, name: title, widget: string }
+      - { label: Position, name: weight, widget: number, value_type: "int" }
+      - { label: Contenu, name: body, widget: markdown, hint: Contenu }
+
   - name: pages
     label: Pages statiques
     label_singular: Page statique
     icon: info
     description: Pages statiques
     files:
+
+      - name: home
+        label: Page d'accueil
+        file: content/_index.md
+        fields:
+          - { label: Titre, name: title, widget: string, hint: Titre de la page }
+          - { label: Description, name: description, widget: string, required: false, hint: Information affichée dans la miniature lorsque la page est partagée }
+          - { label: Contenu, name: body, widget: markdown }
+
 
       - name: about
         label: Contact
