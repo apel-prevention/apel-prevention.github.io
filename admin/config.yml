@@ -28,6 +28,28 @@ collections:
       - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image }, required: false, hint: Image affichée dans la miniature lorsque la page est partagée }
       - { label: Contenu, name: body, widget: markdown }
 
+  - name: staff
+    label: L'équipe
+    label_singular: Membre de l'équipe
+    icon: group
+    folder: content/staff
+    create: true
+    fields:
+      - { label: Nom, name: title, widget: string }
+      - { label: Rôle, name: role, widget: string }
+      - { label: Ordre d'affichage, name: weight, widget: number, value_type: "int" }
+      - { label: Photo, name: image, widget: image, required: false, hint: Photo affichée }
+      - { label: Adresse mail, name: email, widget: string, required: false, hint: Utilisé pour récupérer le gravatar associé à l'adresse }
+      - label: Réseaux sociaux
+        label_singular: Réseau social
+        name: socials
+        required: false
+        widget: list
+        fields:
+        - { label: Nom, name: name, widget: select, options: ["Twitter", "LinkedIn", "Facebook", "Google"] }
+        - { label: Lien, name: url, widget: string }
+      - { label: Contenu, name: body, widget: markdown, hint: Contenu }
+
   - name: references
     label: Références
     label_singular: Référence
