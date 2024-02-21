@@ -3,7 +3,7 @@ backend:
   repo: apel-prevention/site-apel
   branch: main
   automatic_deployments: false
-  base_url: https://sveltia-cms-authenticator.dev-c5f.workers.dev
+  base_url: https://sveltia-cms-auth.apelprevention.workers.dev
 
 publish_mode: editorial_workflow
 media_folder: static/images/uploads
