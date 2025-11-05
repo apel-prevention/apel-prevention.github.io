@@ -1,15 +1,15 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 backend:
   name: github
   repo: apel-prevention/site-apel
   branch: main
-  automatic_deployments: false
+  skip_ci: true
   base_url: https://sveltia-cms-auth.apelprevention.workers.dev
 
 publish_mode: editorial_workflow
 media_folder: static/images/uploads
 public_folder: /images/uploads
 site_url: https://www.apelprevention.fr/
-locale: fr
 collections:
 
   - name: post
@@ -22,8 +22,8 @@ collections:
       - { label: Layout, name: layout, widget: hidden, default: blog }
       - { label: Titre, name: title, widget: string }
       - { label: Brouillon, name: draft, widget: boolean, default: true }
-      - { label: Auteur, name: author, widget: relation, collection: staff, value_field: title, search_fields: title, required: false }
-      - { label: Date de publication, name: date, widget: datetime }
+      - { label: Auteur, name: author, widget: relation, collection: staff, value_field: title, required: false }
+      - { label: Date de publication, name: date, widget: datetime, time_format: false }
       - { label: Description, name: description, widget: string, required: false, hint: Information affichée dans la miniature lorsque la page est partagée }
       - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image }, required: false, hint: Image affichée dans la miniature lorsque la page est partagée }
       - { label: Contenu, name: body, widget: markdown }
@@ -59,7 +59,7 @@ collections:
     fields:
       - { label: Nom, name: title, widget: string }
       - { label: Brouillon, name: draft, widget: boolean, default: true }
-      - { label: Date de la référence, name: date, widget: datetime }
+      - { label: Date de la référence, name: date, widget: datetime, time_format: false }
       - { label: Description, name: description, widget: string, required: false, hint: Information affichée dans la miniature lorsque la page est partagée }
       - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image }, required: false, hint: Image affichée dans la miniature lorsque la page est partagée }
       - { label: Contenu, name: body, widget: markdown, hint: Contenu }
